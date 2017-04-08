@@ -1,0 +1,13 @@
+bin
+build
+README.txt
+.classpath
+.settings
+.project
+.DS_Store
+.idea
+/classes/
+/out/
+
+*.iml
+*.swp
