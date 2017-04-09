@@ -37,9 +37,14 @@ public class Checking extends Account {
 	 * continue to withdraw an overdrawn account until the balance is below -$100
 	 */
 	public boolean withdraw(float amount) {
-		if (amount > 0.0f) {		
+		if (amount > 0.0f) {	
+			float currBalance = balance;
+			if ( (numWithdraws > 10 && (currBalance - amount < -95.0f)) || 
+					(numWithdraws < 10 && (currBalance - amount < -100.0f)) ) {
+				return false;
+			}
 			// KG: incorrect, last balance check should be >=
-			if (getState() == State.OPEN || (getState() == State.OVERDRAWN && balance > -100.0f)) {
+			if (getState() == State.OPEN || (getState() == State.OVERDRAWN && balance >= -100.0f)) {
 				balance = balance - amount;
 				numWithdraws++;
 				if (numWithdraws > 10)
