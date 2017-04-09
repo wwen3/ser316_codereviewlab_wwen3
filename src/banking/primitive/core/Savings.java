@@ -1,13 +1,43 @@
+/*
+  File: banking.primitive.core.Account.java	
+  Author: William Wen
+  Date:	April 9, 2017
+  
+  Description: this is the implementation of the Savings class.
+*/
 package banking.primitive.core;
 
+/**
+  Class: banking.primitive.core.Savings	
+
+  Description: this class extends the abstract Account class with
+               implementation specific to the logic for Savings accounts
+*/
 public class Savings extends Account {
 	private static final long serialVersionUID = 111L;
 	private int numWithdraws = 0;
 
+	/**
+	  Method: Savings
+	  Inputs: name the name of the account being created
+	  Returns:
+
+	  Description: this constructor creates a savings account with the requested
+	               name
+	*/
 	public Savings(String name) {
 		super(name);
 	}
 
+	/**
+	  Method: Savings
+	  Inputs: name the name of the account being created
+	          balance the balance of the account being created
+	  Returns:
+
+	  Description: this constructor creates a savings account with the requested
+	               name and balance
+	*/
 	public Savings(String name, float balance) throws IllegalArgumentException {
 		super(name, balance);
 	}
@@ -44,11 +74,25 @@ public class Savings extends Account {
 		return false;
 	}
 	
-	
+	/**
+	  Method: getType
+	  Inputs: 
+	  Returns: Type enum of "Checking" of this account type
+
+	  Description: this method returns the enum type of this account
+	*/
 	public Type getType() {
 		return Type.SAVINGS; 
 	}
 
+	/**
+	  Method: toString
+	  Inputs: 
+	  Returns: the Type of the account along with its name and balance
+
+	  Description: this constructor creates a savings account with the requested
+	               name and balance
+	*/
 	public String toString() {
 		return "Savings: " + getName() + ": " + getBalance();
 	}
