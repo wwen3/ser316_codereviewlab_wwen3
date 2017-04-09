@@ -77,11 +77,13 @@ public class Savings extends Account {
 	/**
 	  Method: getType
 	  Inputs: 
-	  Returns: String "Checking" of this account type
+	  Returns: Type enum of "Checking" of this account type
 
-	  Description: this method returns the String type name of the account
+	  Description: this method returns the enum type of this account
 	*/
-	public String getType() { return "Checking"; }
+	public Type getType() {
+		return Type.SAVINGS; 
+	}
 
 	/**
 	  Method: toString

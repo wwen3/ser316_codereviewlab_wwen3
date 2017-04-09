@@ -6,6 +6,10 @@ public abstract class Account implements java.io.Serializable {
     protected enum State {
         OPEN, CLOSED, OVERDRAWN
     };
+    
+    public enum Type {
+    	SAVINGS, CHECKING
+    };
 
     protected float balance = 0.0F;
     protected String name;
@@ -59,7 +63,7 @@ public abstract class Account implements java.io.Serializable {
     /**
      * @return either "Checking" or "Savings"
      */
-    public abstract String getType();
+    public abstract Type getType();
 
     protected final State getState() {
         return state;

@@ -1,6 +1,7 @@
 package banking.gui;
 
 import banking.primitive.core.Account;
+import banking.primitive.core.Account.Type;
 import banking.primitive.core.AccountServer;
 import banking.primitive.core.AccountServerFactory;
 
@@ -55,7 +56,7 @@ class MainFrame extends JFrame {
 
 		Object[] accountTypes = {"Savings", "Checking"};
 		typeOptions = new JComboBox(accountTypes);
-		nameField = new JTextField(20);
+		nameField = new JTextField(20); 
 		balanceField = new JTextField(20);
 
 		newAccountButton = new JButton("New Account");
@@ -133,7 +134,7 @@ class MainFrame extends JFrame {
 			String name = nameField.getText();
 			String balance = balanceField.getText();
 
-			if (myServer.newAccount(type, name, Float.parseFloat(balance))) {
+			if (myServer.newAccount(Account.Type.valueOf(type), name, Float.parseFloat(balance))) {
 				JOptionPane.showMessageDialog(null, "Account created successfully");
 			} else {
 				JOptionPane.showMessageDialog(null, "Account not created!");
