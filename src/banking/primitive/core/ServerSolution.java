@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.io.*;
 
 import banking.primitive.core.Account.State;
+import banking.primitive.core.Account.Type;
 
 class ServerSolution implements AccountServer {
 
@@ -45,20 +46,19 @@ class ServerSolution implements AccountServer {
 		}
 	}
 	
-	private boolean newAccountFactory(String type, String name, float balance)
+	private boolean newAccountFactory(Type accountType, String name, float balance)
 		throws IllegalArgumentException {
 		
 		if (accountMap.get(name) != null) return false;
 		
 		Account acc;
-		if ("Checking".equals(type)) {
+		if (accountType == Type.CHECKING) {
 			acc = new Checking(name, balance);
-
-		} else if ("Savings".equals(type)) {
+		} else if (accountType == Type.SAVINGS) {
 			acc = new Savings(name, balance);
 
 		} else {
-			throw new IllegalArgumentException("Bad account type:" + type);
+			throw new IllegalArgumentException("Bad account type:" + accountType);
 		}
 		try {
 			accountMap.put(acc.getName(), acc);
@@ -68,12 +68,12 @@ class ServerSolution implements AccountServer {
 		return true;
 	}
 
-	public boolean newAccount(String type, String name, float balance) 
+	public boolean newAccount(Type accountType, String name, float balance) 
 		throws IllegalArgumentException {
 		
 		if (balance < 0.0f) throw new IllegalArgumentException("New account may not be started with a negative balance");
 		
-		return newAccountFactory(type, name, balance);
+		return newAccountFactory(accountType, name, balance);
 	}
 	
 	public boolean closeAccount(String name) {

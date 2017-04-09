@@ -3,6 +3,9 @@ package banking.primitive.core;
 import java.io.IOException;
 import java.util.List;
 
+import banking.primitive.core.Account;
+import banking.primitive.core.Account.Type;
+
 public interface AccountServer {
 
 	/** 
@@ -15,7 +18,7 @@ public interface AccountServer {
 		@throws IllegalArgumentException if the account type is invalid or the balance is non-negative.
 		@return boolean true if the account was created and stored, false otherwise
 	*/
-	public boolean	newAccount(String type, String name, float balance) throws IllegalArgumentException;
+	public boolean	newAccount(Type accountType, String name, float balance) throws IllegalArgumentException;
 
 	/** Close an account 
 		@param name leading or trailing whitespace is removed
