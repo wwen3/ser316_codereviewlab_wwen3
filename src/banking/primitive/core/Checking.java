@@ -53,7 +53,11 @@ public class Checking extends Account {
 		return false;
 	}
 
-	public String getType() { return "Checking"; }
+	
+	
+	public Type getType() { 
+		return Type.CHECKING;
+	}
 	
 	public String toString() {
 		return "Checking: " + getName() + ": " + getBalance();
